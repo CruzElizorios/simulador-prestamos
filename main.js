@@ -33,11 +33,11 @@ function costoSegunCuota(cantidadCuotas) {
             return alert("tendra que pagar " + cantidadCuotas + " cuota de " + cuota + " que contienen un 10% de interes a partir del proximo mes");
         case 3:
             cuota = Math.round(credito/3);
-            cuota = cuota*1.3;
+            cuota = Math.round(cuota*1.3);
             return alert("tendra que pagar "+ cantidadCuotas + " cuotas de " + cuota + " que contienen un 30% de interes a partir del proximo mes");
         case 6:
             cuota = Math.round(credito/6);
-            cuota = cuota*1.45;
+            cuota = Math.round(cuota*1.45);
             return alert("tendra que pagar "+ cantidadCuotas + " cuotas de " + cuota + " que contienen un 45% de interes a partir del proximo mes");
         case 12:
             cuota = Math.round(credito/12);
@@ -48,7 +48,6 @@ function costoSegunCuota(cantidadCuotas) {
             return cuotaElegida();
     }
 }
-
 
 function cuotaElegida(){
     costoSegunCuota(Number(prompt("puede pagarlo en 1, 3, 6 o 12 cuotas, en cuantas desea pagarlo?")));
@@ -62,15 +61,35 @@ function cuotaElegida(){
 //             return primerNumero - segundoNumero;
 //     }}
 
-let solicitud = prompt( "¿quiere solicitar un credito? Si o No")
-if (solicitud === "Si" || solicitud === "si" || solicitud === "SI") {
-    alert ("le podemos otorgar " + creditoDisponible(Number(prompt("su salario es?"))));
-    cuotaElegida();
-    // cuotaElegida();
-    // let cuotaElegida = Number(prompt("puede pagarlo en 1, 3, 6 o 12 cuotas, en cuantas desea pagarlo?"));
-    // costoSegunCuota(cuotaElegida);
-    //alert( costoSegunCuota(Number(prompt("puede pagarlo en 1, 3, 6 o 12 cuotas, en cuantas desea pagarlo?"))));
-} else {
-    alert("lo esperamos la proxima")
-};          
+// let solicitud = prompt( "¿Quiere solicitar un credito? Si o No")
+// if (solicitud === "Si" || solicitud === "si" || solicitud === "SI") {
+//     alert ("Le podemos otorgar " + creditoDisponible(Number(prompt("¿Cuánto es su salario?"))));
+//     cuotaElegida();
+//     let propuesta = prompt("¿Quiere tomar el prestamo? Si/No")
+//     if (propuesta === "Si" || propuesta === "si" || propuesta === "SI") {
+//         alert("Felicitaciones, en unas horas recibira el dinero")
+//     } else {
+//         alert("solicitar en otra cantidad de cuotas")
+//         let repetir = ""
+//         // while (repetir === "Si") {
+//         //     cuotaElegida();
+//         //     repetir = prompt("¿Quiere tomar el prestamo? Si/No");
+//         // }
+//     }
+// } else {
+//     alert("lo esperamos la proxima")
+// };          
 
+let solicitud = prompt( "¿Quiere solicitar un credito? Si o No")
+if (solicitud === "Si" || solicitud === "si" || solicitud === "SI") {
+    alert ("Le podemos otorgar " + creditoDisponible(Number(prompt("¿Cuánto es su salario?"))));
+let x = "no"
+while (x === "no" || x === "No" || x === "NO" || x === "volver a elegir cuotas" || x === "volver") {
+    cuotaElegida();
+    x = prompt("¿Quiere tomar el prestamo? Si / No (volver a elegir cuotas)")
+}
+alert("Felicitaciones, la solicitud de su credito ha sido exitosa")
+alert("En unos momentos recibira el dinero ;)")
+} else {
+        alert("lo esperamos la proxima")
+}; 
